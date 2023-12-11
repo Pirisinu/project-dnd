@@ -23,7 +23,7 @@
                 <td>{{$character->weight}}</td>
                 <td>{{$character->armor_class}}</td>
                 <td>
-                    <a class="btn btn-primary" href=""><i class="fa-solid fa-eye"></i></a>
+                    <a class="btn btn-primary" href="{{route('admin.characters.show',$character)}}"><i class="fa-solid fa-eye"></i></a>
                     <a class="btn btn-warning" href=""><i class="fa-solid fa-trash"></i></a>
                 </td>
             </tr>

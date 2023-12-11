@@ -37,11 +37,10 @@ class CharacterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Character $character)
     {
-        //
+        return view('admin.characters.show',compact('character'));
     }
-
     /**
      * Show the form for editing the specified resource.
      */
