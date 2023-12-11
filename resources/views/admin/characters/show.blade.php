@@ -6,7 +6,7 @@
     <h2>{{ $character->name }}</h2>
     <p>Altezza:{{ $character->height }} cm | Peso:{{ $character->weight }} kg</p>
     <p>Descrizione personaggio: -> {{$character->background }}</p>
-    <img src="{{$character->image}}" alt="{{ $character->name }}">
+    <img src="{{asset('storage/'.$character->image)}}" alt="{{ $character->name }}">
 </div>
 
 </div>

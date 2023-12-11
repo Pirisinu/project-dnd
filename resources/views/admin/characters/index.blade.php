@@ -2,6 +2,8 @@
 
 @section('content')
     <h1>Character list:</h1>
+    <h5>Aggiungi nuovo personaggio</h5><a class="btn btn-success" href="{{route('admin.characters.create')}}"><i class="fa-solid fa-plus"></i></a>
+
     <table class="table">
         <thead>
           <tr>
@@ -24,6 +26,8 @@
                 <td>{{$character->armor_class}}</td>
                 <td>
                     <a class="btn btn-primary" href="{{route('admin.characters.show',$character)}}"><i class="fa-solid fa-eye"></i></a>
+
+                    <a class="btn btn-dark" href=""><i class="fa-solid fa-pencil"></i></a>
                     <a class="btn btn-warning" href=""><i class="fa-solid fa-trash"></i></a>
                 </td>
             </tr>

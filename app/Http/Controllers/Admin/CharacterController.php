@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Character;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CharacterController extends Controller
 {
@@ -23,7 +24,7 @@ class CharacterController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.characters.create-edit');
     }
 
     /**
@@ -31,7 +32,23 @@ class CharacterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data_character = $request->all();
+
+        $form_data_character['slug'] = Character::generateSlug($form_data_character['name']);
+
+        //se esiste la chiave image salvo l'immagine nel file system e nel database
+        if(array_key_exists('image',$form_data_character)){
+            //prima di salvare il file prendo il nome del file per salvarlo nel db
+            /* $form_data_character['image_original_name'] = $request->file('image')->getClientOriginalName(); */
+            //salvo il file nello storage rinominandolo
+            $form_data_character['image']  = Storage::put('uploads',$form_data_character['image']);
+        }
+
+
+        $new_character= Character::create($form_data_character);
+
+        return redirect()->route('admin.characters.show', $new_character);
+
     }
 
     /**
