@@ -89,6 +89,7 @@
         <label class="form-label" for="int">Intelligenza</label>
         <input class="form-control" type="number" placeholder="inserisci l'intelligenza del personaggio" id="int" name="int" min="0"
         value="{{ old("int", $character?->int) }}">
+        @error('int')
             <div class="alert alert-danger my-2">{{ $message }}</div>
         @enderror
 
