@@ -27,7 +27,7 @@
                 <td>
                     <a class="btn btn-primary" href="{{route('admin.characters.show',$character)}}"><i class="fa-solid fa-eye"></i></a>
 
-                    <a class="btn btn-dark" href=""><i class="fa-solid fa-pencil"></i></a>
+                    <a class="btn btn-dark" href="{{route('admin.characters.edit',$character)}}"><i class="fa-solid fa-pencil"></i></a>
                     <a class="btn btn-warning" href=""><i class="fa-solid fa-trash"></i></a>
                 </td>
             </tr>
