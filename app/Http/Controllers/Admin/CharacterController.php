@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CharacterRequest;
 use App\Models\Character;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -24,13 +25,17 @@ class CharacterController extends Controller
      */
     public function create()
     {
-        return view('admin.characters.create-edit');
+        $title = "Inserimento nuovo personaggio";
+        $method = "POST";
+        $route = route("admin.characters.store");
+        $character = null;
+        return view('admin.characters.create-edit', compact("title", "method", "route", "character"));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CharacterRequest $request)
     {
         $form_data_character = $request->all();
 
@@ -61,17 +66,39 @@ class CharacterController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Character $character)
     {
-        //
+        $title = "Modifica personaggio";
+        $method = "PUT";
+        $route = route("admin.characters.update", $character);
+        return view('admin.characters.create-edit', compact("title", "method", "route", "character"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+
+    public function update(CharacterRequest $request, Character $character)
     {
-        //
+
+        $form_data_character = $request->all();
+        if($form_data_character["name"] != $character->name){
+            $form_data_character["slug"] = Character::generateSlug($form_data_character['name']);
+        }else{
+            $form_data_character["slug"] = $character->slug;
+        }
+
+        if(array_key_exists('image',$form_data_character)){
+            if($character->image){
+                Storage::disk("public")->delete($character->image);
+            }
+
+            $form_data_character['image']  = Storage::put('uploads',$form_data_character['image']);
+        }
+
+        $character->update($form_data_character);
+        return redirect()->route('admin.characters.show', $character);
+
     }
 
     /**
