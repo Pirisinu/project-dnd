@@ -9,6 +9,9 @@
         @method($method)
         <label class="form-label" for="name">Nome</label>
         <input class="form-control mb-3" type="text" placeholder="inserisci il nome" id="name" name="name" value="{{ old("name", $skill?->name) }}">
+        @error('name')
+                <div class="alert alert-danger my-2">{{ $message }}</div>
+        @enderror
 
         <label for="description" class="form-label">Descrizione</label>
         <textarea
@@ -16,10 +19,16 @@
                 class="form-control mb-3"
                 id="description"
                 name="description">{{ old("description", $skill?->description) }}</textarea>
+        @error('description')
+            <div class="alert alert-danger my-2">{{ $message }}</div>
+        @enderror
 
         <label class="form-label" for="peculiar_characteristic">Caratteristica Peculiare</label>
         <input class="form-control mb-3" type="text" placeholder="Inserisci caratteristica peculiare" id="peculiar_characteristic" name="peculiar_characteristic" min="0"
         value="{{ old("peculiar_characteristic", $skill?->peculiar_characteristic) }}">
+        @error('peculiar_characteristic')
+            <div class="alert alert-danger my-2">{{ $message }}</div>
+        @enderror
 
         <button class="btn btn-dark " type="submit">Aggiungi</button>
         <button class="btn btn-dark ">Reset</button>
