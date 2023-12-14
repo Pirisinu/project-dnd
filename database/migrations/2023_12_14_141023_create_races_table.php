@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50);
             $table->string('slug', 50);
-            $table->text('descriptoion');
+            $table->text('description');
             $table->tinyInteger('Mod_str')->unsigned();
             $table->tinyInteger('Mod_dex')->unsigned();
             $table->tinyInteger('Mod_con')->unsigned();
