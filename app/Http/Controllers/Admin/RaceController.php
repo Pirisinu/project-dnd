@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Race;
 use Illuminate\Http\Request;
 
 class RaceController extends Controller
@@ -12,7 +13,8 @@ class RaceController extends Controller
      */
     public function index()
     {
-        return view('admin.races.index');
+        $races = Race::orderBy('name')->get();
+        return view('admin.races.index', compact('races'));
     }
 
     /**
