@@ -12,7 +12,7 @@ class RaceController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.races.index');
     }
 
     /**
