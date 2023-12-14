@@ -48,9 +48,12 @@ class RaceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Race $race)
     {
-        //
+        $title = "Modifica personaggio";
+        $method = "PUT";
+        $route = route('admin.races.update', $race);
+        return view('admin.races.create-edit', compact("title", "method", "route", "race"));
     }
 
     /**
