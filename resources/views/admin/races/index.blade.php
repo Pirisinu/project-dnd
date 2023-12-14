@@ -18,7 +18,7 @@
                 <td>{{$race->name}}</td>
                 <td>{{$race->description}}</td>
                 <td>
-                    <a class="btn btn-primary" href=""><i class="fa-solid fa-eye"></i></a>
+                    <a class="btn btn-primary" href="{{route('admin.races.show', $race)}}"><i class="fa-solid fa-eye"></i></a>
                     <a class="btn btn-dark" href=""><i class="fa-solid fa-pencil"></i></a>
                     <a class="btn btn-warning" href=""><i class="fa-solid fa-trash"></i></a>
                 </td>
