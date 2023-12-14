@@ -22,7 +22,11 @@ class RaceController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Inserimento nuova razza";
+        $method = "POST";
+        $route = route('admin.races.store');
+        $race = null;
+        return view('admin.races.create-edit', compact("title", "method", "route", "race"));
     }
 
     /**
