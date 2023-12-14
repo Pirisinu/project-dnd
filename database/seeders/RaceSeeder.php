@@ -18,12 +18,12 @@ class RaceSeeder extends Seeder
         $races = config('races');
         foreach ($races as $race) {
             $race['slug'] = Race::generateSlug($race['name'], Race::class);
-            $race['Mod_str'] = $faker->numberBetween(-3, 3);
-            $race['Mod_dex'] = $faker->numberBetween(-3, 3);
-            $race['Mod_con'] = $faker->numberBetween(-3, 3);
-            $race['Mod_int'] = $faker->numberBetween(-3, 3);
-            $race['Mod_wis'] = $faker->numberBetween(-3, 3);
-            $race['Mod_cha'] = $faker->numberBetween(-3, 3);
+            $race['mod_str'] = $faker->numberBetween(-3, 3);
+            $race['mod_dex'] = $faker->numberBetween(-3, 3);
+            $race['mod_con'] = $faker->numberBetween(-3, 3);
+            $race['mod_int'] = $faker->numberBetween(-3, 3);
+            $race['mod_wis'] = $faker->numberBetween(-3, 3);
+            $race['mod_cha'] = $faker->numberBetween(-3, 3);
             DB::table('races')->insert($race);
         }
     }

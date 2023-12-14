@@ -16,12 +16,12 @@ return new class extends Migration
             $table->string('name', 50);
             $table->string('slug', 50);
             $table->text('description');
-            $table->tinyInteger('Mod_str')->signed();
-            $table->tinyInteger('Mod_dex')->signed();
-            $table->tinyInteger('Mod_con')->signed();
-            $table->tinyInteger('Mod_int')->signed();
-            $table->tinyInteger('Mod_wis')->signed();
-            $table->tinyInteger('Mod_cha')->signed();
+            $table->tinyInteger('mod_str')->signed();
+            $table->tinyInteger('mod_dex')->signed();
+            $table->tinyInteger('mod_con')->signed();
+            $table->tinyInteger('mod_int')->signed();
+            $table->tinyInteger('mod_wis')->signed();
+            $table->tinyInteger('mod_cha')->signed();
             $table->timestamps();
         });
     }

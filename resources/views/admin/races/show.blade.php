@@ -13,35 +13,35 @@
 
         <div class="row">
             <div class="col-2 text-center">
-                <h6><strong>Modificatore forza:</strong></h6>
-                <p>{{$race->Mod_str }}</p>
+                <h6><strong>modificatore forza:</strong></h6>
+                <p>{{$race->mod_str }}</p>
             </div>
 
             <div class="col-2 text-center">
-                <h6><strong>Modificatore destrezza:</strong></h6>
-                <p>{{$race->Mod_dex }}</p>
+                <h6><strong>modificatore destrezza:</strong></h6>
+                <p>{{$race->mod_dex }}</p>
             </div>
 
             <div class="col-2 text-center">
-                <h6><strong>Modificatore costituzione:</strong></h6>
-                <p>{{$race->Mod_con }}</p>
+                <h6><strong>modificatore costituzione:</strong></h6>
+                <p>{{$race->mod_con }}</p>
             </div>
 
             <div class="col-2 text-center">
-                <h6><strong>Modificatore intelligenza:</strong></h6>
-                <p>{{$race->Mod_int }}</p>
-            </div>
-
-
-            <div class="col-2 text-center">
-                <h6><strong>Modificatore saggezza:</strong></h6>
-                <p>{{$race->Mod_wis }}</p>
+                <h6><strong>modificatore intelligenza:</strong></h6>
+                <p>{{$race->mod_int }}</p>
             </div>
 
 
             <div class="col-2 text-center">
-                <h6><strong>Modificatore carisma:</strong></h6>
-                <p>{{$race->Mod_cha }}</p>
+                <h6><strong>modificatore saggezza:</strong></h6>
+                <p>{{$race->mod_wis }}</p>
+            </div>
+
+
+            <div class="col-2 text-center">
+                <h6><strong>modificatore carisma:</strong></h6>
+                <p>{{$race->mod_cha }}</p>
             </div>
 
         </div>
