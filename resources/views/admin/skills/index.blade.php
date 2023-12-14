@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Skills list:</h1>
-    <h5>Aggiungi nuova skill</h5><a class="btn btn-success" href="{{route('admin.characters.create')}}"><i class="fa-solid fa-plus"></i></a>
+    <h5>Aggiungi nuova skill</h5><a class="btn btn-success" href="{{route('admin.skills.create')}}"><i class="fa-solid fa-plus"></i></a>
 
     <table class="table">
         <thead>
@@ -21,7 +21,7 @@
                 <td>{{$skill->description}}</td>
                 <td>{{$skill->peculiar_characteristic}}</td>
                 <td>
-                    <a class="btn btn-dark" href=""><i class="fa-solid fa-pencil"></i></a>
+                    <a class="btn btn-dark" href="{{route('admin.skills.edit',$skill)}}"><i class="fa-solid fa-pencil"></i></a>
                     <a class="btn btn-warning" href=""><i class="fa-solid fa-trash"></i></a>
                 </td>
             </tr>
