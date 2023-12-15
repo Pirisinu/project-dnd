@@ -23,23 +23,19 @@
             <div class="alert alert-danger my-2">{{ $message }}</div>
         @enderror
 
-        <label class="form-label" for="peculiar_characteristic">Caratteristica Peculiare</label>
-        <input class="form-control mb-3" type="text" id="peculiar_characteristic" name="peculiar_characteristic" min="0"
-        value="{{ old("peculiar_characteristic", $skill?->peculiar_characteristic) }}">
-        @error('peculiar_characteristic')
-            <div class="alert alert-danger my-2">{{ $message }}</div>
-        @enderror
-
         <label for="peculiar_characteristic" class="form-label">Caratteristica Peculiare</label>
-        <select class="form-select mb-3" name="peculiar_characteristic" id="peculiar_characteristic">
+        <select class="form-select mb-3" name="peculiar_characteristic" id="peculiar_characteristic" value="{{ old("peculiar_characteristic", $skill?->peculiar_characteristic) }}">
             <option value="" selected disabled>Seleziona</option>
-
             @php
                 $selectedValues = [];
+                $oldValue = old('peculiar_characteristic', $skill ? $skill['peculiar_characteristic'] : '');
             @endphp
             @foreach($skills as $skill)
                 @if (!in_array($skill['peculiar_characteristic'], $selectedValues))
-                    <option value="{{ $skill['peculiar_characteristic'] }}">
+                    <option value="{{ $skill['peculiar_characteristic'] }}"
+                            @if($skill['peculiar_characteristic'] == $oldValue)
+                                selected
+                            @endif>
                         {{ $skill['peculiar_characteristic'] }}
                     </option>
                     @php
@@ -48,6 +44,9 @@
                 @endif
             @endforeach
         </select>
+        @error('peculiar_characteristic')
+            <div class="alert alert-danger my-2">{{ $message }}</div>
+        @enderror
 
         <button class="btn btn-dark " type="submit">Aggiungi</button>
         <button class="btn btn-dark ">Reset</button>
