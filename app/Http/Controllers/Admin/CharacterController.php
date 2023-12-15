@@ -7,6 +7,7 @@ use App\Http\Requests\CharacterRequest;
 use App\Models\Character;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Skill;
 
 class CharacterController extends Controller
 {
@@ -29,7 +30,8 @@ class CharacterController extends Controller
         $method = "POST";
         $route = route("admin.characters.store");
         $character = null;
-        return view('admin.characters.create-edit', compact("title", "method", "route", "character"));
+        $skills = Skill::all();
+        return view('admin.characters.create-edit', compact("title", "method", "route", "character", "skills"));
     }
 
     /**
@@ -49,8 +51,11 @@ class CharacterController extends Controller
             $form_data_character['image']  = Storage::put('uploads',$form_data_character['image']);
         }
 
-
         $new_character= Character::create($form_data_character);
+
+        if(array_key_exists("skills", $form_data_character)){
+            $new_character->skills()->attach($form_data_character["skills"]);
+        }
 
         return redirect()->route('admin.characters.show', $new_character);
 
@@ -71,7 +76,8 @@ class CharacterController extends Controller
         $title = "Modifica personaggio";
         $method = "PUT";
         $route = route("admin.characters.update", $character);
-        return view('admin.characters.create-edit', compact("title", "method", "route", "character"));
+        $skills = Skill::all();
+        return view('admin.characters.create-edit', compact("title", "method", "route", "character", "skills"));
     }
 
     /**
@@ -94,6 +100,12 @@ class CharacterController extends Controller
             }
 
             $form_data_character['image']  = Storage::put('uploads',$form_data_character['image']);
+        }
+
+        if(array_key_exists("skills", $form_data_character)){
+            $character->skills()->sync($form_data_character["skills"]);
+        }else{
+            $character->skills()->detach();
         }
 
         $character->update($form_data_character);

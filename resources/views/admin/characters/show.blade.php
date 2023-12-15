@@ -15,6 +15,12 @@
     <p>Saggezza: -> {{$character->wis }}</p>
     <p>Carisma: -> {{$character->cha }}</p>
 
+    @forelse ($character->skills as $skill)
+        <span class="badge text-bg-info m-1">{{ $skill->name }}</span>
+    @empty
+        <span class="badge text-bg-info">Non ha skills</span>
+    @endforelse
+
 </div>
 
 </div>
