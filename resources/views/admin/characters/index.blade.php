@@ -12,6 +12,7 @@
             <th scope="col">height</th>
             <th scope="col">weight</th>
             <th scope="col">armor_class</th>
+            <th scope="col">Skill</th>
             <th scope="col">Action</th>
 
           </tr>
@@ -24,6 +25,13 @@
                 <td>{{$character->height}}</td>
                 <td>{{$character->weight}}</td>
                 <td>{{$character->armor_class}}</td>
+                <td>
+                    @forelse ($character->skills as $skill)
+                        <span class="badge text-bg-info">{{ $skill->name }}</span>
+                    @empty
+                        -
+                    @endforelse
+                </td>
                 <td>
                     <a class="btn btn-primary" href="{{route('admin.characters.show',$character)}}"><i class="fa-solid fa-eye"></i></a>
 

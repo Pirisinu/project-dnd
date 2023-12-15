@@ -13,6 +13,10 @@ class Skill extends Model
         'id',
     ];
 
+    public function characters(){
+        return $this->belongsToMany(Character::class);
+    }
+
     public static function generateSlug($name){
         $slug = Str::slug($name, "-");
         $original_slug = $slug;

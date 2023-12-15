@@ -14,11 +14,11 @@ class CharacterSkillTableSeeder extends Seeder
      */
     public function run(): void
     {
-        for($i = 0; $i < 150; $i++){
+        for($i = 0; $i < 50; $i++){
             $character = Character::inRandomOrder()->first();
             $skill_id = Skill::inRandomOrder()->first()->id;
 
-            $character->tecnologies()->attach($skill_id);
+            $character->skills()->attach($skill_id);
         }
     }
 }
