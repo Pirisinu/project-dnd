@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+
 class Character extends Model
 {
     use HasFactory;
@@ -13,6 +14,14 @@ class Character extends Model
     protected $guarded = [
         'id',
     ];
+
+    public function race(){
+        return $this->belongsTo(Race::class);
+    }
+    public function skills(){
+        return $this->belongsToMany(Skill::class);
+    }
+
 
     public static function generateSlug($string){
 
