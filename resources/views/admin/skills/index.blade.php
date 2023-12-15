@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+<div class="container">
     <h1>Skills list:</h1>
     <h5>Aggiungi nuova skill</h5><a class="btn btn-success" href="{{route('admin.skills.create')}}"><i class="fa-solid fa-plus"></i></a>
 
@@ -29,4 +30,6 @@
 
         </tbody>
     </table>
+</div>
+
 @endsection

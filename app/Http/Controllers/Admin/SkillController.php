@@ -21,13 +21,15 @@ class SkillController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Skill $skill)
     {
+        $skills = Skill::all();
+
         $title = "Inserimento nuova skill";
         $method = "POST";
         $route = route("admin.skills.store");
         $skill = null;
-        return view('admin.skills.create-edit', compact("title", "method", "route", "skill"));
+        return view('admin.skills.create-edit', compact("title", "method", "route", "skill", "skills"));
     }
 
     /**
@@ -57,10 +59,12 @@ class SkillController extends Controller
      */
     public function edit(Skill $skill)
     {
+        $skills = Skill::all();
+
         $title = "Modifica skill";
         $method = "PUT";
         $route = route("admin.skills.update", $skill);
-        return view('admin.skills.create-edit', compact("title", "method", "route", "skill"));
+        return view('admin.skills.create-edit', compact("title", "method", "route", "skill", "skills"));
     }
 
     /**
