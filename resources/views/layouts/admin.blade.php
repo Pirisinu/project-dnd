@@ -13,18 +13,16 @@
 </head>
 <body>
     @include('partials.header')
-    <h1>Admin side</h1>
 
-    <nav>
-        <ul>
-            <li>
-                <a href="{{ route('admin.characters.index') }}">Lista Charater</a>
-            </li>
-            <li>
-                <a href="{{ route('admin.characters.create') }}">New Character</a>
-            </li>
-        </ul>
-    </nav>
-    @yield('content')
+    <div class="d-flex my_container">
+
+        @include('partials.aside')
+
+        <div class="scroll-box">
+            <h1>Admin side</h1>
+            @yield('content')
+        </div>
+    </div>
+
 </body>
 </html>
