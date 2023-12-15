@@ -108,6 +108,21 @@
             <div class="alert alert-danger my-2">{{ $message }}</div>
         @enderror
 
+        @foreach ($skills as $skill)
+            <input
+                type="checkbox"
+                class="btn-check"
+                id="skill_{{ $skill->id }}"
+                autocomplete="off"
+                name="skills[]"
+                value="{{ $skill->id }}"
+                @if($errors->any() && in_array($skill->id, old("skills",[])))
+                    checked
+                @endif
+                >
+            <label class="btn" for="skill_{{ $skill->id }}">{{ $skill->name }}</label>
+        @endforeach
+
 
 
             <button class="btn btn-dark " type="submit">Aggiungi</button>
