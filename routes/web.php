@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CharacterController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\RaceController;
 use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\SkillController;
@@ -26,6 +27,7 @@ Route::middleware(['auth', 'verified'])
     ->group(function() {
         Route::resource('characters', CharacterController::class);
         Route::resource('skills', SkillController::class);
+        Route::resource('races', RaceController::class);
     });
 
 Route::middleware('auth')->group(function () {
