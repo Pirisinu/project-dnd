@@ -9,7 +9,15 @@ use Illuminate\Support\Str;
 class Race extends Model
 {
     use HasFactory;
+
+    public function characters(){
+        return $this->hasMany(Character::class);
+    }
+
     protected $guarded = ['id'];
+
+
+
     public static function generateSlug($string){
 
         $slug =  Str::slug($string, '-');

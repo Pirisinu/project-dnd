@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Character;
+use App\Models\Race;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -17,6 +18,7 @@ class CharacterSeeder extends Seeder
         for($i = 0; $i < 100; $i++){
             $character = new Character();
             $character->name = $faker->name();
+            $character->race_id = Race::inRandomOrder()->first()->id;
             $character->slug = Character::generateSlug($character->name);
             $character->height = $faker->numberBetween(50, 250);
             $character->weight = $faker->numberBetween(20, 200);
