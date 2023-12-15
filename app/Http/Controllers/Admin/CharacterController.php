@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CharacterRequest;
 use App\Models\Character;
+use App\Models\Race;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Skill;
@@ -31,7 +32,8 @@ class CharacterController extends Controller
         $route = route("admin.characters.store");
         $character = null;
         $skills = Skill::all();
-        return view('admin.characters.create-edit', compact("title", "method", "route", "character", "skills"));
+        $races = Race::all();
+        return view('admin.characters.create-edit', compact("title", "method", "route", "character", "skills","races"));
     }
 
     /**
@@ -77,7 +79,8 @@ class CharacterController extends Controller
         $method = "PUT";
         $route = route("admin.characters.update", $character);
         $skills = Skill::all();
-        return view('admin.characters.create-edit', compact("title", "method", "route", "character", "skills"));
+        $races = Race::all();
+        return view('admin.characters.create-edit', compact("title", "method", "route", "character", "skills","races"));
     }
 
     /**

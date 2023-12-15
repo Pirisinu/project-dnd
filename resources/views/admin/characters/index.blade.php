@@ -9,6 +9,7 @@
           <tr>
             <th scope="col">Id</th>
             <th scope="col">Nome</th>
+            <th scope="col">Race</th>
             <th scope="col">height</th>
             <th scope="col">weight</th>
             <th scope="col">armor_class</th>
@@ -22,6 +23,7 @@
             <tr>
                 <td>{{$character->id}}</td>
                 <td>{{$character->name}}</td>
+                <td>{{$character->race->name}}</td>
                 <td>{{$character->height}}</td>
                 <td>{{$character->weight}}</td>
                 <td>{{$character->armor_class}}</td>
@@ -34,7 +36,6 @@
                 </td>
                 <td>
                     <a class="btn btn-primary" href="{{route('admin.characters.show',$character)}}"><i class="fa-solid fa-eye"></i></a>
-
                     <a class="btn btn-dark" href="{{route('admin.characters.edit',$character)}}"><i class="fa-solid fa-pencil"></i></a>
                     <a class="btn btn-warning" href=""><i class="fa-solid fa-trash"></i></a>
                 </td>

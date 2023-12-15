@@ -4,29 +4,50 @@
    <h1>{{ $title }}</h1>
    <div class="container">
 
-    <form action="{{ $route }}" method="POST" enctype="multipart/form-data">
+       <form action="{{ $route }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method($method)
-        <label class="form-label" for="name">Nome Personaggio</label>
-        <input class="form-control" type="text" placeholder="inserisci il nome" id="name" name="name" value="{{ old("name", $character?->name) }}">
-        @error('name')
+
+        <div class="row">
+            <div class="col-3">
+                <label class="form-label" for="name">Nome Personaggio</label>
+                <input class="form-control" type="text" placeholder="inserisci il nome" id="name" name="name" value="{{ old("name", $character?->name) }}">
+                @error('name')
                 <div class="alert alert-danger my-2">{{ $message }}</div>
-        @enderror
+                @enderror
+            </div>
 
-
-        <label class="form-label" for="height">Altezza Personaggio</label>
-        <input class="form-control" type="number" placeholder="inserisci l'altezza" id="height" name="height" min="0" value="{{ old("height", $character?->height) }}">
-        @error('height')
+            <div class="col-3">
+                <label class="form-label" for="height">Altezza Personaggio</label>
+                <input class="form-control" type="number" placeholder="inserisci l'altezza" id="height" name="height" min="0" value="{{ old("height", $character?->height) }}">
+                @error('height')
                 <div class="alert alert-danger my-2">{{ $message }}</div>
-        @enderror
+                @enderror
+            </div>
 
-
-        <label class="form-label" for="weight">Peso Personaggio</label>
-        <input class="form-control" type="number" placeholder="inserisci peso" id="weight" name="weight" min="0" value="{{ old("weight", $character?->weight) }}">
-        @error('weight')
+            <div class="col-3">
+                <label class="form-label" for="weight">Peso Personaggio</label>
+                <input class="form-control" type="number" placeholder="inserisci peso" id="weight" name="weight" min="0" value="{{ old("weight", $character?->weight) }}">
+                @error('weight')
                 <div class="alert alert-danger my-2">{{ $message }}</div>
-        @enderror
+                @enderror
+            </div>
+            <div class="custom">
+                    Inserire immagine preview
+            </div>
+        </div>
 
+        <div class="col-3">
+            <label class="form-label" for="race_id">Razza</label>
+            <select class="form-select" aria-label="Default select example" id="race_id" name="race_id">
+                <option selected value="">Seleziona Razza</option>
+                @foreach ($races as $race)
+                <option value="{{$race->id}}"
+                    @if ($race->id === old('race_id', $character?->race?->id)) selected  @endif>
+                    {{ $race->name }}</option>
+                @endforeach()
+            </select>
+        </div>
 
         <label for="background" class="form-label">Storia del personaggio</label>
         <textarea
@@ -62,51 +83,63 @@
             <div class="alert alert-danger my-2">{{ $message }}</div>
         @enderror
 
+        <div class="row">
+            <div class="col-4">
+                <label class="form-label" for="str">Forza</label>
+                <input class="form-control" type="number" placeholder="inserisci la Forza" id="str" name="str" min="0"
+                value="{{ old("str", $character?->str) }}">
+                @error('str')
+                    <div class="alert alert-danger my-2">{{ $message }}</div>
+                @enderror
+            </div>
 
-        <label class="form-label" for="str">Forza</label>
-        <input class="form-control" type="number" placeholder="inserisci la Forza" id="str" name="str" min="0"
-        value="{{ old("str", $character?->str) }}">
-        @error('str')
-            <div class="alert alert-danger my-2">{{ $message }}</div>
-        @enderror
-
-        <label class="form-label" for="dex">Destrezza</label>
-        <input class="form-control" type="number" placeholder="inserisci la Destrezza" id="dex" name="dex" min="0"
-        value="{{ old("dex", $character?->dex) }}">
-        @error('dex')
-            <div class="alert alert-danger my-2">{{ $message }}</div>
-        @enderror
-
-
-        <label class="form-label" for="con">Costituzione</label>
-        <input class="form-control" type="number" placeholder="inserisci la costituzione del personaggio" id="con" name="con" min="0"
-        value="{{ old("con", $character?->con) }}">
-        @error('con')
-            <div class="alert alert-danger my-2">{{ $message }}</div>
-        @enderror
+            <div class="col-4">
+                <label class="form-label" for="dex">Destrezza</label>
+                <input class="form-control" type="number" placeholder="inserisci la Destrezza" id="dex" name="dex" min="0"
+                value="{{ old("dex", $character?->dex) }}">
+            @error('dex')
+                <div class="alert alert-danger my-2">{{ $message }}</div>
+            @enderror
+            </div>
 
 
-        <label class="form-label" for="int">Intelligenza</label>
-        <input class="form-control" type="number" placeholder="inserisci l'intelligenza del personaggio" id="int" name="int" min="0"
-        value="{{ old("int", $character?->int) }}">
-        @error('int')
-            <div class="alert alert-danger my-2">{{ $message }}</div>
-        @enderror
+            <div class="col-4">
+                <label class="form-label" for="con">Costituzione</label>
+                <input class="form-control" type="number" placeholder="inserisci la costituzione del personaggio" id="con" name="con" min="0"
+                value="{{ old("con", $character?->con) }}">
+            @error('con')
+                <div class="alert alert-danger my-2">{{ $message }}</div>
+            @enderror
+            </div>
+
+            <div class="col-4">
+                <label class="form-label" for="int">Intelligenza</label>
+                <input class="form-control" type="number" placeholder="inserisci l'intelligenza del personaggio" id="int" name="int" min="0"
+                value="{{ old("int", $character?->int) }}">
+                @error('int')
+                    <div class="alert alert-danger my-2">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="col-4">
+                <label class="form-label" for="wis">Saggezza</label>
+                <input class="form-control" type="number" placeholder="inserisci la saggezza del personaggio" id="wis" name="wis" min="0"
+                value="{{ old("wis", $character?->wis) }}">
+                @error('wis')
+                    <div class="alert alert-danger my-2">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="col-4">
+                <label class="form-label" for="cha">Carisma</label>
+                <input class="form-control" type="number" placeholder="inserisci peso" id="cha" name="cha" min="0" value="{{ old("cha", $character?->cha) }}">
+                @error('cha')
+                    <div class="alert alert-danger my-2">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
 
 
-        <label class="form-label" for="wis">Saggezza</label>
-        <input class="form-control" type="number" placeholder="inserisci la saggezza del personaggio" id="wis" name="wis" min="0"
-        value="{{ old("wis", $character?->wis) }}">
-        @error('wis')
-            <div class="alert alert-danger my-2">{{ $message }}</div>
-        @enderror
-
-
-        <label class="form-label" for="cha">Carisma</label>
-        <input class="form-control" type="number" placeholder="inserisci peso" id="cha" name="cha" min="0" value="{{ old("cha", $character?->cha) }}">
-        @error('cha')
-            <div class="alert alert-danger my-2">{{ $message }}</div>
-        @enderror
 
         @foreach ($skills as $skill)
             <input
@@ -122,12 +155,12 @@
                 >
             <label class="btn" for="skill_{{ $skill->id }}">{{ $skill->name }}</label>
         @endforeach
+            <div>
+                <button class="btn btn-dark " type="submit">Aggiungi</button>
+                <button class="btn btn-dark ">Reset</button>
+                <button class="btn btn-dark ">Torna alla Home</button>
 
-
-
-            <button class="btn btn-dark " type="submit">Aggiungi</button>
-            <button class="btn btn-dark ">Reset</button>
-            <button class="btn btn-dark ">Torna alla Home</button>
+            </div>
 
        </form>
    </div>
