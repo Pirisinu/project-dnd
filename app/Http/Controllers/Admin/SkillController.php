@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Skill;
+use App\http\Requests\SkillRequest;
 
 class SkillController extends Controller
 {
@@ -35,7 +36,7 @@ class SkillController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SkillRequest $request)
     {
         $form_data_skill = $request->all();
 
@@ -70,7 +71,7 @@ class SkillController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Skill $skill)
+    public function update(SkillRequest $request, Skill $skill)
     {
         $form_data_skill = $request->all();
         if($form_data_skill["name"] != $skill->name){
