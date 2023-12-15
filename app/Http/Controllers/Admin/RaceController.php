@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RaceRequest;
 use App\Models\Race;
 use Illuminate\Http\Request;
 
@@ -32,9 +33,12 @@ class RaceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RaceRequest $request)
     {
-        //
+        $form_data_race = $request->all();
+        $form_data_race['slug'] = Race::generateSlug($form_data_race['name']);
+        $new_race= Race::create($form_data_race);
+        return redirect()->route('admin.races.show', $new_race);
     }
 
     /**
@@ -59,9 +63,12 @@ class RaceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(RaceRequest $request, Race $race)
     {
-        //
+        $form_data_race = $request->all();
+        $form_data_race['slug'] = Race::generateSlug($form_data_race['name']);
+        $race_updated= Race::create($form_data_race);
+        return redirect()->route('admin.races.show', $race_updated);
     }
 
     /**

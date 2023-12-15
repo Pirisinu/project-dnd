@@ -24,7 +24,7 @@ class RaceRequest extends FormRequest
         return [
 
             'name' => 'required|string|min:5|max:50',
-            'description' => 'required|text|min:5',
+            'description' => 'required|string|min:5',
             'mod_str' => 'required|numeric|min:-3|max:3',
             'mod_dex' => 'required|numeric|min:-3|max:3',
             'mod_con' => 'required|numeric|min:-3|max:3',
@@ -34,7 +34,7 @@ class RaceRequest extends FormRequest
 
         ];
     }
-    public function messagges(): array
+    public function messages(): array
     {
         return [
 
@@ -44,7 +44,7 @@ class RaceRequest extends FormRequest
             'name.max' => 'The race name cannot exceed :max races.',
 
             'description.required' => 'The race description is required.',
-            'description.text' => 'The race description must be a text.',
+            'description.string' => 'The race description must be a string.',
             'description.min' => 'The race description cannot be under :min races.',
             'description.max' => 'The race description cannot exceed :max races.',
 
