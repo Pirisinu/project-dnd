@@ -1,2 +1,16 @@
 @import '~bootstrap/scss/bootstrap';
 @import './partials/header';
+
+body,.my_container{
+        overflow: hidden;
+        height: calc(100vh - 60px);
+
+        .scroll-box{
+            overflow: auto;
+            width: 100%;
+        }
+}
+.navbar-collapse{
+    flex-grow: 0;
+}
+
