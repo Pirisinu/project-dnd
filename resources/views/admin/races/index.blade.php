@@ -21,7 +21,7 @@
                     {{-- SHOW --}}
                     <a class="btn btn-primary" href="{{route('admin.races.show', $race)}}"><i class="fa-solid fa-eye"></i></a>
                     {{-- EDIT --}}
-                    <a class="btn btn-dark" href=""><i class="fa-solid fa-pencil"></i></a>
+                    <a class="btn btn-dark" href="{{route('admin.races.edit', $race)}}"><i class="fa-solid fa-pencil"></i></a>
                     {{-- DELETE --}}
                     <form class="d-inline-block" action={{route('admin.races.destroy', $race)}} method="post" onsubmit="return confirm('Are you sure you want to delete this race?')">
                         @csrf
